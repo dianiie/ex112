@@ -12,6 +12,13 @@ function Heater (action: string) {
         pins.digitalWritePin(DigitalPin.P2, 0)
     }
 }
+function Fan (action: string) {
+    if (action == "on" || action == "ON") {
+        pins.digitalWritePin(DigitalPin.P14, 1)
+    } else if (action == "off" || action == "OFF") {
+        pins.digitalWritePin(DigitalPin.P14, 0)
+    }
+}
 function Door (action: string) {
     if (action == "O" || action == "o") {
         Dge = 0
@@ -59,6 +66,13 @@ function lamp (level: number) {
     pins.analogWritePin(AnalogPin.P0, Math.map(Light, 0, 5, 0, 1023))
     basic.pause(1000)
 }
+function Pump (action: string) {
+    if (action == "on" || action == "ON") {
+        pins.digitalWritePin(DigitalPin.P15, 0)
+    } else if (action == "off" || action == "OFF") {
+        pins.digitalWritePin(DigitalPin.P15, 1)
+    }
+}
 function windows (action: string) {
     if (action == "O" || action == "o") {
         Dge = 10
@@ -86,9 +100,9 @@ function WidowsClose () {
 }
 let Light = 0
 let Dge = 0
-Fire_Alarm("on")
-basic.pause(1000)
-Fire_Alarm("off")
+Pump("on")
+basic.pause(2000)
+Pump("off")
 basic.forever(function () {
 	
 })
