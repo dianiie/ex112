@@ -1,3 +1,10 @@
+function Fire_Alarm (action: string) {
+    if (action == "on" || action == "ON") {
+        pins.digitalWritePin(DigitalPin.P5, 1)
+    } else if (action == "off" || action == "OFF") {
+        pins.digitalWritePin(DigitalPin.P5, 0)
+    }
+}
 function Heater (action: string) {
     if (action == "on" || action == "ON") {
         pins.digitalWritePin(DigitalPin.P2, 1)
@@ -79,9 +86,9 @@ function WidowsClose () {
 }
 let Light = 0
 let Dge = 0
-Heater("on")
+Fire_Alarm("on")
 basic.pause(1000)
-Heater("off")
+Fire_Alarm("off")
 basic.forever(function () {
 	
 })
